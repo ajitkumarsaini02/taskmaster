@@ -22,7 +22,7 @@
     <div class="toolbar">
         <div class="search-box">
             <i class="fas fa-search"></i>
-            <input type="text" id="search-input" placeholder="Search tasks...">
+            <input type="text" id="search-input" placeholder="Search tasks..." autocomplete="off">
         </div>
 
         <div class="filters">
@@ -30,6 +30,11 @@
             <button class="filter-btn" data-filter="pending">Pending</button>
             <button class="filter-btn" data-filter="completed">Completed</button>
         </div>
+    </div>
+
+    <div class="task-summary">
+        <span id="task-stats">0 tasks</span>
+        <button id="clear-completed-btn" class="clear-completed" style="display: none;">Clear Completed</button>
     </div>
 
     <div class="input-area">

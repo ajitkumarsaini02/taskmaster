@@ -325,6 +325,44 @@ header h1 {
     color: var(--primary);
 }
 
+.task-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-left: 1rem;
+}
+
+.edit-btn {
+    background: rgba(108, 92, 231, 0.1);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    color: var(--primary);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.edit-btn:hover {
+    background: var(--primary);
+    color: white;
+    transform: scale(1.08);
+}
+
+body.dark-mode .edit-btn {
+    background: rgba(162, 155, 254, 0.15);
+    color: var(--primary);
+}
+
+body.dark-mode .edit-btn:hover {
+    background: var(--primary);
+    color: #1e272e;
+}
+
 .delete-btn {
     background: rgba(255, 118, 117, 0.1);
     border: none;
@@ -334,16 +372,142 @@ header h1 {
     color: var(--danger);
     font-size: 1.1rem;
     cursor: pointer;
-    margin-left: 1rem;
     transition: all 0.3s ease;
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
 .delete-btn:hover {
     background: var(--danger);
     color: white;
-    transform: rotate(5deg) scale(1.1);
+    transform: rotate(5deg) scale(1.08);
+}
+
+/* Task summary bar */
+.task-summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    padding: 0 0.2rem;
+    margin-bottom: 1.2rem;
+}
+
+.clear-completed {
+    background: transparent;
+    border: none;
+    color: var(--danger);
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: opacity 0.2s;
+    font-family: inherit;
+}
+
+.clear-completed:hover {
+    text-decoration: underline;
+}
+
+/* Empty State */
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 1.5rem;
+    color: var(--text-muted);
+    text-align: center;
+    border: 2px dashed var(--border-color);
+    border-radius: 16px;
+    animation: slideIn 0.3s ease;
+}
+
+.empty-state i {
+    font-size: 2.5rem;
+    margin-bottom: 0.8rem;
+    color: var(--primary);
+    opacity: 0.6;
+}
+
+.empty-state p {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+/* Overdue due date */
+.due-date.overdue {
+    color: var(--danger);
+    font-weight: 600;
+}
+
+/* Inline Edit */
+.inline-edit-box {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+}
+
+.inline-edit-input {
+    flex: 1;
+    padding: 0.4rem 0.8rem;
+    border: 2px solid var(--primary);
+    border-radius: 8px;
+    background: var(--container-bg);
+    color: var(--text-main);
+    font-size: 1rem;
+    outline: none;
+    font-family: inherit;
+}
+
+.save-edit-btn, .cancel-edit-btn {
+    border: none;
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+}
+
+.save-edit-btn {
+    background: var(--primary);
+    color: white;
+}
+
+.save-edit-btn:hover {
+    background: var(--primary-hover);
+}
+
+.cancel-edit-btn {
+    background: var(--border-color);
+    color: var(--text-muted);
+}
+
+.cancel-edit-btn:hover {
+    background: var(--danger);
+    color: white;
+}
+
+/* Dark mode inputs fix */
+body.dark-mode input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+    cursor: pointer;
+}
+
+select option {
+    background: #ffffff;
+    color: #2d3436;
+}
+
+body.dark-mode select option {
+    background: #1e272e;
+    color: #f5f6fa;
 }
 
 @keyframes slideIn {
@@ -361,7 +525,7 @@ header h1 {
     .input-area { flex-direction: column; }
     #date-input, #priority-input, #add-btn { width: 100%; }
     header h1 { font-size: 1.5rem; }
-    .task-item { flex-direction: column; align-items: flex-start; position: relative; }
-    .delete-btn { position: absolute; top: 1rem; right: 1rem; }
-    .task-content { margin-left: 0; margin-top: 10px; }
+    .task-item { flex-direction: column; align-items: flex-start; position: relative; gap: 0.8rem; }
+    .task-actions { position: absolute; top: 1rem; right: 1rem; margin-left: 0; }
+    .task-content { margin-left: 0; width: 100%; padding-right: 5rem; }
 }
